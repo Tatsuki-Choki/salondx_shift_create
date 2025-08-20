@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Settings, Users, Calendar, Clock } from 'lucide-react';
+import { Settings, Users } from 'lucide-react';
 import { AppProvider } from '@/context/AppContext';
-import { ErrorBoundary, ToastContainer, PlaceholderComponent } from '@/components/common';
+import { ErrorBoundary, ToastContainer } from '@/components/common';
 import { AdminLayout, StaffLayout } from '@/components/layout';
 import { DashboardHome } from '@/components/dashboard';
 import { StaffManagement } from '@/components/staff';
+import { ShiftCalendar, ShiftRequests } from '@/components/shift';
+import { StoreSettings } from '@/components/settings';
 
 // Role switcher component
 const RoleSwitcher: React.FC<{ role: string; setRole: (role: string) => void }> = ({ role, setRole }) => (
@@ -44,21 +46,9 @@ const AdminContent: React.FC<{ activeTab: string }> = ({ activeTab }) => {
     case 'staff':
       return <StaffManagement />;
     case 'shift':
-      return (
-        <PlaceholderComponent
-          title="シフト作成"
-          description="シフトカレンダー機能は準備中です"
-          icon={Calendar}
-        />
-      );
+      return <ShiftCalendar isAdmin={true} />;
     case 'settings':
-      return (
-        <PlaceholderComponent
-          title="店舗設定"
-          description="店舗設定機能は準備中です"
-          icon={Settings}
-        />
-      );
+      return <StoreSettings />;
     default:
       return <DashboardHome />;
   }
@@ -68,29 +58,11 @@ const AdminContent: React.FC<{ activeTab: string }> = ({ activeTab }) => {
 const StaffContent: React.FC<{ activeTab: string }> = ({ activeTab }) => {
   switch (activeTab) {
     case 'view':
-      return (
-        <PlaceholderComponent
-          title="シフト確認"
-          description="シフト確認機能は準備中です"
-          icon={Calendar}
-        />
-      );
+      return <ShiftCalendar isAdmin={false} />;
     case 'request':
-      return (
-        <PlaceholderComponent
-          title="希望提出"
-          description="希望提出機能は準備中です"
-          icon={Clock}
-        />
-      );
+      return <ShiftRequests />;
     default:
-      return (
-        <PlaceholderComponent
-          title="シフト確認"
-          description="シフト確認機能は準備中です"
-          icon={Calendar}
-        />
-      );
+      return <ShiftCalendar isAdmin={false} />;
   }
 };
 
@@ -124,37 +96,6 @@ function App() {
           <ToastContainer />
         </div>
 
-        <style>{`
-          @keyframes slide-in {
-            from {
-              transform: translateX(100%);
-              opacity: 0;
-            }
-            to {
-              transform: translateX(0);
-              opacity: 1;
-            }
-          }
-          
-          @keyframes scale-up {
-            from {
-              transform: scale(0.9);
-              opacity: 0;
-            }
-            to {
-              transform: scale(1);
-              opacity: 1;
-            }
-          }
-          
-          .animate-slide-in {
-            animation: slide-in 0.3s ease-out;
-          }
-          
-          .animate-scale-up {
-            animation: scale-up 0.3s ease-out;
-          }
-        `}</style>
       </AppProvider>
     </ErrorBoundary>
   );

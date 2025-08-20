@@ -47,10 +47,7 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ onNavigate }) => {
     <div className="p-8 space-y-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 
-          className="text-4xl font-bold text-gray-900 mb-2" 
-          style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}
-        >
+        <h1 className="text-4xl font-bold text-gray-900 mb-2">
           ダッシュボード
         </h1>
         <p className="text-gray-600 text-lg">シフト管理システム</p>

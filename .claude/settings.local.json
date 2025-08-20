@@ -15,7 +15,12 @@
       "Bash(rm:*)",
       "Bash(npm install:*)",
       "Bash(npx tailwindcss init:*)",
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(git push:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npx:*)",
+      "Bash(node:*)",
+      "Bash(npm uninstall:*)"
     ],
     "deny": [],
     "ask": []
