@@ -223,7 +223,6 @@ class ValidationService {
    * Validate shift assignment
    */
   validateShiftAssignment(
-    date: string,
     shiftType: 'morning' | 'evening',
     staffIds: string[],
     allStaff: Staff[],

@@ -1,78 +1,172 @@
-# Salon DX Shift Management System
+# Salon Shift Management System
 
-美容サロン向けのシフト管理システムです。スタッフのシフト作成、管理、希望提出を効率的に行うことができます。
+A comprehensive React-based shift management system for salon businesses with AI-powered scheduling capabilities.
 
-## 機能
+## Features
 
-### 管理者向け機能
-- **ダッシュボード**: スタッフ数、月間シフト数などの統計情報を表示
-- **シフト作成**: ドラッグ&ドロップによる直感的なシフト作成
-- **AI自動生成**: スタッフの希望を考慮したシフトの自動生成
-- **スタッフ管理**: スタッフの追加、編集、削除
-- **店舗設定**: 営業時間、シフト時間、最低必要人数の設定
+### Core Functionality
+- **Staff Management**: Add, edit, and manage staff members with roles and contact information
+- **Shift Scheduling**: Create and manage shifts with drag-and-drop interface
+- **AI-Powered Shift Generation**: Automated shift creation using Google Gemini AI
+- **Request Management**: Staff can submit shift preferences and time-off requests
+- **Store Configuration**: Set operating hours, shift times, and minimum staffing requirements
 
-### スタッフ向け機能
-- **シフト確認**: 確定されたシフトの確認
-- **希望提出**: 休み希望、早番・遅番希望の提出
-- **個人ビュー**: 自分のシフトをハイライト表示
+### Technical Features
+- **TypeScript**: Full type safety and better development experience
+- **Responsive Design**: Works on desktop, tablet, and mobile devices
+- **Data Persistence**: Local storage with import/export capabilities
+- **Error Handling**: Comprehensive error boundaries and validation
+- **Toast Notifications**: User-friendly feedback system
+- **Modern UI**: Clean, accessible interface with Tailwind CSS
 
-## 特徴
+## Getting Started
 
-- **モノクロームデザイン**: シンプルで洗練されたUIデザイン
-- **リアルタイム保存**: LocalStorageによる自動保存機能
-- **レスポンシブ対応**: デスクトップ・タブレット表示に最適化
-- **日本語対応**: 完全日本語インターフェース
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-## 技術スタック
+### Installation
 
-- React 18
-- Context API (状態管理)
-- Tailwind CSS (スタイリング)
-- Lucide React (アイコン)
-- LocalStorage (データ永続化)
-
-## セットアップ
-
-1. リポジトリをクローン
+1. Clone the repository:
 ```bash
-git clone https://github.com/[your-username]/salondx_shift_create.git
+git clone <repository-url>
 cd salondx_shift_create
 ```
 
-2. 依存関係をインストール
+2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. 開発サーバーを起動
+3. Set up environment variables:
 ```bash
-npm start
+cp .env.example .env.local
 ```
 
-4. ブラウザで `http://localhost:3000` を開く
+4. Add your Gemini API key to `.env.local`:
+```
+VITE_GEMINI_API_KEY=your_api_key_here
+```
 
-## 使い方
+5. Start the development server:
+```bash
+npm run dev
+```
 
-### 初期設定
-1. 管理者モードで「店舗設定」から営業時間とシフト時間を設定
-2. 「スタッフ管理」でスタッフを登録
-3. 各曜日の最低必要人数を設定
+### Getting a Gemini API Key
 
-### シフト作成
-1. 管理者モードで「シフト作成」を選択
-2. 左側のスタッフリストからカレンダーにドラッグ&ドロップ
-3. またはAI作成ボタンで自動生成
-4. 確定ボタンでシフトを確定
+1. Visit [Google AI Studio](https://makersuite.google.com/app/apikey)
+2. Sign in with your Google account
+3. Create a new API key
+4. Copy the key and add it to your `.env.local` file
 
-### 希望提出（スタッフ）
-1. スタッフモードに切り替え
-2. 右上からスタッフを選択
-3. 「希望提出」タブから日付と希望種別を選択して提出
+## Project Structure
 
-## ライセンス
+```
+src/
+├── components/          # React components
+│   ├── common/         # Reusable UI components
+│   ├── layout/         # Layout components
+│   ├── dashboard/      # Dashboard components
+│   ├── staff/          # Staff management components
+│   └── calendar/       # Calendar components
+├── hooks/              # Custom React hooks
+├── services/           # External services and APIs
+├── types/              # TypeScript type definitions
+├── utils/              # Utility functions
+├── config/             # Configuration files
+└── context/            # React context providers
+```
 
-MIT
+## Available Scripts
 
-## 作成者
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run test` - Run tests
+- `npm run lint` - Run ESLint
 
-[Your Name]
+## Usage Guide
+
+### For Administrators
+
+1. **Dashboard**: View system overview and quick statistics
+2. **Staff Management**: 
+   - Add new staff members with their roles
+   - Edit existing staff information
+   - Delete staff (only if not assigned to shifts)
+3. **Shift Creation**:
+   - Use drag-and-drop to assign staff to shifts
+   - Generate AI-powered shifts based on preferences
+   - Confirm shifts when finalized
+4. **Store Settings**: Configure operating hours and minimum staffing
+
+### For Staff Members
+
+1. **Staff Selection**: Choose your profile from the dropdown
+2. **Shift Viewing**: See your assigned shifts in calendar format
+3. **Request Submission**: Submit preferences for:
+   - Days off
+   - Preferred shifts (morning/evening)
+   - Flexible scheduling
+
+## AI Integration
+
+The system integrates with Google's Gemini AI to automatically generate optimized shift schedules based on:
+- Staff availability and preferences
+- Minimum staffing requirements
+- Store operating hours
+- Historical patterns
+
+## Data Management
+
+- **Local Storage**: All data is stored locally in the browser
+- **Export/Import**: Backup and restore data as JSON files
+- **Data Validation**: Comprehensive validation for all inputs
+
+## Browser Support
+
+- Chrome 88+
+- Firefox 85+
+- Safari 14+
+- Edge 88+
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Support
+
+For support, please open an issue on the GitHub repository or contact the development team.
+
+## Roadmap
+
+### Phase 2 Features (Planned)
+- Advanced reporting and analytics
+- Multi-location support
+- Staff scheduling preferences
+- Email notifications
+- Mobile app companion
+- Integration with payroll systems
+
+### Phase 3 Features (Future)
+- Real-time collaboration
+- Advanced AI optimization
+- Custom shift patterns
+- Compliance tracking
+- API for third-party integrations
+
+## Acknowledgments
+
+- Built with React 18 and TypeScript
+- UI components with Tailwind CSS
+- Icons by Lucide React
+- AI powered by Google Gemini

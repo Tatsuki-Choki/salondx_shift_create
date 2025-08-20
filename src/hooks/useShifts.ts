@@ -1,5 +1,5 @@
 import { useAppContext } from '@/context/AppContext';
-import { Shifts, ShiftType, Staff, AIShiftGenerationRequest } from '@/types';
+import { ShiftType, AIShiftGenerationRequest } from '@/types';
 import { geminiService } from '@/services';
 import { 
   formatDate, 

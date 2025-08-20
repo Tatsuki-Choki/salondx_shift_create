@@ -9,7 +9,7 @@ import { useToast } from './useToast';
  */
 export const useRequests = () => {
   const { state, setRequests, addRequest, updateRequest, deleteRequest } = useAppContext();
-  const { showError, showSuccess, showWarning } = useToast();
+  const { showError, showSuccess } = useToast();
 
   // Submit a new request
   const submitRequest = (staffId: string, formData: RequestFormData): boolean => {

@@ -1,4 +1,4 @@
-import { AppState, Staff, StoreSettings, Shifts, ShiftRequest, ShiftStatus } from '@/types';
+import { Staff, StoreSettings, Shifts, ShiftRequest, ShiftStatus } from '@/types';
 
 const STORAGE_KEY = 'salonShiftData';
 

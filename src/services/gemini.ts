@@ -2,11 +2,9 @@ import {
   Staff, 
   StoreSettings, 
   ShiftRequest, 
-  Shifts, 
   AIShiftGenerationRequest, 
   AIShiftGenerationResponse,
-  APIResponse,
-  AppError
+  APIResponse
 } from '@/types';
 import config from '@/config';
 
@@ -47,8 +45,11 @@ class GeminiService {
       const prompt = this.createShiftGenerationPrompt(request);
       const response = await this.callGeminiAPI(prompt);
 
-      if (!response.success) {
-        return response;
+      if (!response.success || !response.data) {
+        return {
+          success: false,
+          error: response.error
+        };
       }
 
       const aiResponse = this.parseShiftGenerationResponse(response.data);

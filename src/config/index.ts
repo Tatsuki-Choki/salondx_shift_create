@@ -48,15 +48,13 @@ class ConfigManager {
 
   setGeminiApiKey(apiKey: string): void {
     this.config.gemini.apiKey = apiKey;
-    // Save to localStorage for persistence
-    localStorage.setItem('gemini_api_key', apiKey);
+    // Note: API keys should be managed server-side in production
+    // This is only for demo purposes
   }
 
   loadFromStorage(): void {
-    const storedApiKey = localStorage.getItem('gemini_api_key');
-    if (storedApiKey && !this.config.gemini.apiKey) {
-      this.config.gemini.apiKey = storedApiKey;
-    }
+    // In production, API keys should come from environment variables only
+    // Not from localStorage for security reasons
   }
 
   isGeminiConfigured(): boolean {
